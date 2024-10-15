@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using System.Net.NetworkInformation;
 
 namespace BookManagement
 {
@@ -50,9 +51,19 @@ namespace BookManagement
             }
             else
             {
-                MessageBox.Show("You are not permission !");
+                int accounID= account.AccountId;
+                AppState.AccountId = accounID ;
+
+
+                UserWindow userWindow = new UserWindow();
+                userWindow.ShowDialog();
             }
 
+        }
+        public static class AppState
+        {
+            public static int AccountId { get; set; }
+            
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BookBussinessObject;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +62,16 @@ namespace BookDAO
                 _context.SaveChanges();
             }
         }
-
+        public List<Book> GetAvailableBooksForAccount(int accountId)
+        {
+            var borrowedBookIds = _context.BorrowingHistories.Include(b => b.Book)
+                                           .Where(b => b.AccountId == accountId)
+                                           .Select(b => b.BookId)
+                                           .ToList();
+            return _context.Books
+                           .Where(book => !borrowedBookIds.Contains(book.BookId))
+                           .ToList();
+        }
 
     }
 }

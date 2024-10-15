@@ -14,5 +14,6 @@ namespace BookRespository
         public void AddBook(Book book);
         public void UpdateBook(Book book);
         public void DeleteBook(int id);
+        public List<Book> GetAvailableBooksForAccount(int id);
     }
 }

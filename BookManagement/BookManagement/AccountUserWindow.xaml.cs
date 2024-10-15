@@ -22,10 +22,12 @@ namespace BookManagement
     public partial class AccountUserWindow : Window
     {
         private IAccountRespository accountRepository;
+        private IBorrowingHisRespository borrowingHistoryRepository;
         public AccountUserWindow()
         {
             InitializeComponent();
             accountRepository = new AccountRespository();
+            borrowingHistoryRepository = new BorrowingHisRespository();
             LoadAccounts();
 
         }
@@ -68,21 +70,25 @@ namespace BookManagement
             {
                 if (AccountsDataGrid.SelectedItem is Account selectedAccount) 
                 {
-                    selectedAccount.Username = txtUsername.Text;
-                    selectedAccount.Password = txtPassword.Password;
-                    selectedAccount.RoleId = Int32.Parse(txtRoleId.Text);
+                    var relatedBorrowingHistories = borrowingHistoryRepository.GetBorrowingHisByAccountID(selectedAccount.AccountId);
+                    foreach (var history in relatedBorrowingHistories)
+                    {
+                        borrowingHistoryRepository.DeleteBorrowingHis(history.BorrowId); 
+                    }
+
+                    // Tiến hành xóa tài khoản
                     accountRepository.deleteAccount(selectedAccount.AccountId);
-                    MessageBox.Show("Account deleted successfully."); 
-                    LoadAccounts(); 
+                    MessageBox.Show("Account deleted successfully.");
+                    LoadAccounts();
                 }
                 else
                 {
-                    MessageBox.Show("Please select an account to delete."); // Thông báo nếu không có tài khoản nào được chọn
+                    MessageBox.Show("Please select an account to delete.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}"); // Thông báo lỗi
+                MessageBox.Show($"Error: {ex.Message}"); 
             }
 
         }

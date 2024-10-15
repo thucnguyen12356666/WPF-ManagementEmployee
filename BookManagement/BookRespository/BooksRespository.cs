@@ -15,6 +15,7 @@ namespace BookRespository
         public void AddBook(Book book) => BooksDAO.Instance.AddBook(book);
         public void UpdateBook(Book book) => BooksDAO.Instance.UpdateBook(book);
         public void DeleteBook(int id) => BooksDAO.Instance.DeleteBook(id);
+        public List<Book> GetAvailableBooksForAccount(int id) => BooksDAO.Instance.GetAvailableBooksForAccount(id);
 
     }
 }
