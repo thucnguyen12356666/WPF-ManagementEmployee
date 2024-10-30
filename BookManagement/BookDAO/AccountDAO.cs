@@ -51,8 +51,8 @@ namespace BookDAO
             if (accountToUpdate != null)
             {
                 accountToUpdate.Username = account.Username;
-                accountToUpdate.Password = account.Password;
-                accountToUpdate.RoleId = account.RoleId;
+                //accountToUpdate.Password = account.Password;
+                //accountToUpdate.RoleId = account.RoleId;
                 _context.SaveChanges();
             }
         }

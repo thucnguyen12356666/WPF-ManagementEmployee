@@ -20,7 +20,7 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,130,0,0">
             <Button x:Name="UpdateButton" Content="Update Account" Width="120" Margin="5" Background="SteelBlue" Foreground="White" FontWeight="Bold" Click="UpdateButton_Click"/>
             <Button x:Name="DeleteButton" Content="Delete Account" Width="120" Margin="5" Background="Tomato" Foreground="White" FontWeight="Bold" Click="DeleteButton_Click"/>
-            <Button x:Name="LoadAccountButton" Content="Load Account" Width="120" Margin="5" Background="MediumSeaGreen" Foreground="White" FontWeight="Bold" Click="LoadAccountButton_Click"/>
+            
         </StackPanel>
 
         <TextBlock x:Name="StatusTextBlock" VerticalAlignment="Top" Margin="0,180,0,0" Foreground="Red"/>

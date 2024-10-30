@@ -52,7 +52,7 @@ namespace BookManagement
         {
             if (AccountsDataGrid.SelectedItem is Account selectedAccount)
             {
-                // Cập nhật các ô nhập liệu với thông tin của cuốn sách đã chọn
+               
 
                 txtUsername.Text = selectedAccount.Username; // Cập nhật Username
                 txtPassword.Password = selectedAccount.Password; // Cập nhật Password
@@ -60,9 +60,7 @@ namespace BookManagement
             }
         }
 
-        private void LoadAccountButton_Click(object sender, RoutedEventArgs e)
-        {
-        }
+       
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -100,8 +98,8 @@ namespace BookManagement
                 if (AccountsDataGrid.SelectedItem is Account selectedAccount) 
                 {
                     selectedAccount.Username = txtUsername.Text; 
-                    selectedAccount.Password = txtPassword.Password; 
-                    selectedAccount.RoleId = Int32.Parse(txtRoleId.Text);
+                    //selectedAccount.Password = txtPassword.Password; 
+                    //selectedAccount.RoleId = Int32.Parse(txtRoleId.Text);
 
                     
                     accountRepository.updateAccount(selectedAccount);
