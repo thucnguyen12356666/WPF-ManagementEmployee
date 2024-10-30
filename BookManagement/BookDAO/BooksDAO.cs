@@ -55,12 +55,23 @@ namespace BookDAO
         }
         public void DeleteBook(int id)
         {
+            var borrowingsToDelete = _context.BorrowingHistories.Where(b => b.BookId == id).ToList();
+
+
+            if (borrowingsToDelete.Any())
+            {
+                _context.BorrowingHistories.RemoveRange(borrowingsToDelete);
+            }
+
+
             var bookToDelete = _context.Books.SingleOrDefault(b => b.BookId == id);
             if (bookToDelete != null)
             {
                 _context.Books.Remove(bookToDelete);
-                _context.SaveChanges();
             }
+
+           
+            _context.SaveChanges();
         }
         public List<Book> GetAvailableBooksForAccount(int accountId)
         {
