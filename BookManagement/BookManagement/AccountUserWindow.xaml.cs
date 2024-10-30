@@ -54,9 +54,8 @@ namespace BookManagement
             {
                
 
-                txtUsername.Text = selectedAccount.Username; // Cập nhật Username
-                txtPassword.Password = selectedAccount.Password; // Cập nhật Password
-                txtRoleId.Text = selectedAccount.RoleId.ToString(); // Cập nhật RoleId
+                txtUsername.Text = selectedAccount.Username; 
+               
             }
         }
 
